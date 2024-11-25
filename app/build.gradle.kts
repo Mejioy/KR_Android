@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "ru.kafpin.kr_android"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ru.kafpin.kr_android"
