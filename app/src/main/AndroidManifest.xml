@@ -28,6 +28,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name="ru.kafpin.kr_android.SingleServiceActivity"
+            android:parentActivityName="ru.kafpin.kr_android.ServicesActivity"
+            android:theme="@style/Theme.KR_Android">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.ServicesActivity" />
+        </activity>
     </application>
 
 </manifest>

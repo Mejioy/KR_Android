@@ -65,7 +65,8 @@ class DatabaseHelper(context: Context) :
         val mOutput: OutputStream = FileOutputStream(DB_PATH + DB_NAME)
         val mBuffer = ByteArray(1024)
         var mLength: Int
-        while ((mInput.read(mBuffer).also { mLength = it }) > 0) mOutput.write(mBuffer, 0, mLength)
+        while ((mInput.read(mBuffer).also { mLength = it }) > 0)
+            mOutput.write(mBuffer, 0, mLength)
         mOutput.flush()
         mOutput.close()
         mInput.close()

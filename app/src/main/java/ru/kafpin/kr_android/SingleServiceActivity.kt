@@ -1,11 +1,13 @@
 package ru.kafpin.kr_android
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.os.Bundle
 import android.widget.TextView
 
 class SingleServiceActivity:Activity() {
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.service_details)
@@ -14,8 +16,8 @@ class SingleServiceActivity:Activity() {
         val tvDescription : TextView = findViewById(R.id.tvDescription)
         val tvPrice : TextView = findViewById(R.id.tvPrice)
 
-        tvName.text = intent.extras!!.getString("name")
-        tvDescription.text = intent.extras!!.getString("description")
-        tvPrice.text = intent.extras!!.getString("price")
+        tvName.text = intent.getStringExtra("name")
+        tvDescription.text = intent.getStringExtra("description")
+        tvPrice.text = "Стоимость "+intent.getIntExtra("price",0).toString()+" рублей"
     }
 }

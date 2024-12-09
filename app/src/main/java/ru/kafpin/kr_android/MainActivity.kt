@@ -16,6 +16,10 @@ class MainActivity : AppCompatActivity() {
         val bSerrives : Button = findViewById(R.id.bShowServices)
         val bMyAccount : Button = findViewById(R.id.bAddAccount)
 
+        //Устанавливаем цвет фона
+        bSerrives.setBackgroundColor(resources.getColor(R.color.dark_blue))
+        bMyAccount.setBackgroundColor(resources.getColor(R.color.dark_blue))
+
         bSerrives.setOnClickListener{
             val intent = Intent(this@MainActivity, ServicesActivity::class.java)
             startActivity(intent)

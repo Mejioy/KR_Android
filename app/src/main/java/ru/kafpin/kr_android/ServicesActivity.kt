@@ -40,35 +40,35 @@ class ServicesActivity: Activity() {
     }
     fun updateList(mDb : SQLiteDatabase)
     {
-        // Список клиентов
+        // Список услуг
         val services = ArrayList<HashMap<String, Any?>>()
-        // Список параметров конкретного клиента
+        // Список параметров услуги
         var service: HashMap<String, Any?>
 
         // Отправляем запрос в БД
         val cursor: Cursor = mDb.rawQuery("SELECT * FROM services", null)
         cursor.moveToFirst()
 
-        // Пробегаем по всем клиентам
+        // Пробегаем по всем услугам
         while (!cursor.isAfterLast) {
             service = HashMap()
 
-            // Заполняем клиента
+            // Заполняем услугу
             service["id"] = cursor.getInt(0)
             service["name"] = cursor.getString(1)
             service["description"] = cursor.getString(2)
             service["price"] = cursor.getInt(3)
 
-            // Закидываем клиента в список клиентов
+            // Закидываем услугу в список услуг
             services.add(service)
 
-            // Переходим к следующему клиенту
+            // Переходим к следующей услуге
             cursor.moveToNext()
         }
         cursor.close()
 
 
-        // Какие параметры клиента мы будем отображать в соответствующих
+        // Какие параметры услуги мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
         val from = arrayOf("name")
         val to = intArrayOf(R.id.tvServiceName)
@@ -78,14 +78,64 @@ class ServicesActivity: Activity() {
         val adapter = SimpleAdapter(this, services, R.layout.adapter_service_item, from, to)
         val listView = findViewById<View>(R.id.lvServices) as ListView
         listView.adapter = adapter
-        listView.setOnItemClickListener(OnItemClickListener { parent, v, position, id ->
-            val selectedItem = parent.getItemAtPosition(position) as service
-            val intent = Intent(this@ServicesActivity, SingleServiceActivity::class.java)
-            intent.putExtra("name", listView.selectedItem.javaClass.getField("name").toString())
-            intent.putExtra("description", listView.selectedItem.javaClass.getField("description").toString())
-            intent.putExtra("price", listView.selectedItem.javaClass.getField("price").toString())
-            startActivity(intent)
+
+
+        //Устанавливаем слушатель событий на ListView
+        listView.onItemClickListener =
+            OnItemClickListener { parent, view, position, id -> // Получаем данные о выбранном элементе
+
+
+                val selectedItem = parent.getItemAtPosition(position) as HashMap<String, Any?>
+                println(selectedItem)
+
+                val name = selectedItem["name"] as String
+                var description : String = ""
+                if(selectedItem["description"]!=null)
+                    description = selectedItem["description"] as String
+                val price = selectedItem["price"] as Int
+//
+//
+                 // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
+                val intent: Intent = Intent(this@ServicesActivity,SingleServiceActivity::class.java)
+
+
+                // Передаем user_id в новый экран
+                intent.putExtra("name", name)
+                intent.putExtra("price", price)
+                if(selectedItem["description"]!=null)
+                    intent.putExtra("description", description)
+
+                // Запускаем новый экран
+                startActivity(intent)
             }
+
+//        listView.onItemClickListener = object : OnItemClickListener {
+//            override fun onItemClick(
+//                parent: AdapterView<*>?, itemClicked: View, position: Int,
+//                id: Long
+//            ) {
+//
+//                // Получаем данные о выбранном элементе
+//                val selectedItem = parent!!.getItemAtPosition(position) as HashMap<String, Any?>
+//                val name = selectedItem["name"] as String
+//                val price = selectedItem["price"] as Int
+//                val description = selectedItem["description"] as String
+//
+//
+//                // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
+//                val intent: Intent = Intent(this@ServicesActivity,SingleServiceActivity::class.java)
+//
+//
+//                // Передаем user_id в новый экран
+//                intent.putExtra("name", name)
+//                intent.putExtra("price", price)
+//                intent.putExtra("description", description)
+//
+//                // Запускаем новый экран
+//                startActivity(intent)
+//            }
+//        }
+
 
 //        countriesList.setOnItemClickListener(OnItemClickListener { parent, v, position, id -> // получаем выбранный элемент
 //            val selectedItem = parent.getItemAtPosition(position) as String
