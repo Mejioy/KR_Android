@@ -14,6 +14,8 @@
     <string name="service_info">Информация об услуге</string>
     <string name="service_date">Дата оказания</string>
 
+    <string name="user_info">Информация о пользователе</string>
+
     <string name="user_name">Имя пользователя</string>
     <string name="user_phone">Номер телефона</string>
 

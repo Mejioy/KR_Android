@@ -17,54 +17,55 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity android:name="ru.kafpin.kr_android.ServicesActivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name="ru.kafpin.kr_android.SingleServiceActivity"
-            android:parentActivityName="ru.kafpin.kr_android.ServicesActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName="ru.kafpin.kr_android.ServicesActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.ServicesActivity" />
         </activity>
 
         <activity android:name="ru.kafpin.kr_android.UsersActivity"
-            android:parentActivityName=".MainActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName=".MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name="ru.kafpin.kr_android.SingleUserActivity"
-            android:parentActivityName="ru.kafpin.kr_android.UsersActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName="ru.kafpin.kr_android.UsersActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.UsersActivity" />
         </activity>
         <activity android:name="ru.kafpin.kr_android.SingleAutomobileActivity"
-            android:parentActivityName="ru.kafpin.kr_android.SingleUserActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName="ru.kafpin.kr_android.SingleUserActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.SingleUserActivity" />
         </activity>
         <activity android:name="ru.kafpin.kr_android.SingleProvidedServiceActivity"
-            android:parentActivityName="ru.kafpin.kr_android.SingleAutomobileActivity"
-            android:theme="@style/Theme.KR_Android">
+            android:parentActivityName="ru.kafpin.kr_android.SingleAutomobileActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.SingleAutomobileActivity" />
         </activity>
+
+        <activity android:name="ru.kafpin.kr_android.AddUserActivity"
+            android:parentActivityName="ru.kafpin.kr_android.UsersActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.UsersActivity" />
+        </activity>
+
     </application>
 
 </manifest>

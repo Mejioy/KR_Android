@@ -17,11 +17,11 @@ class ServicesActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
-
-        val mDBHelper: DatabaseHelper
+        updateDB()
+    }
+    fun updateDB(){
         val mDb : SQLiteDatabase
-
-        mDBHelper = DatabaseHelper(this)
+        val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 
         try {
             mDBHelper.updateDataBase()

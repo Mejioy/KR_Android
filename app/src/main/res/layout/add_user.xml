@@ -6,8 +6,6 @@
     android:padding="10dp"
     >
 
-
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +13,7 @@
         android:layout_marginStart="160dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="187dp"
-        android:text="@string/providedservice_info"
+        android:text="@string/user_info"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.456"
@@ -24,52 +22,64 @@
 
 
     <TextView
-        android:id="@+id/tvName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="160dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="175dp"
+        android:layout_marginEnd="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="26sp"/>
+        android:text="@string/user_name"
+        android:textSize="16sp"/>
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tiName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="165dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="16sp"/>
 
     <TextView
-        android:id="@+id/tvPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="240dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="255dp"
+        android:layout_marginEnd="220dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="26sp"/>
+        android:text="@string/user_phone"
+        android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tvProvidedServiceDate"
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/tiPhone"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="320dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="245dp"
+        android:layout_marginEnd="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="26sp"/>
+        android:textSize="16sp"/>
 
-    <TextView
-        android:id="@+id/tvDescription"
-        android:layout_width="0dp"
+    <Button
+        android:id="@+id/bAddAccount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="400dp"
-        android:layout_marginEnd="40dp"
+        android:layout_marginStart="160dp"
+        android:layout_marginEnd="160dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/add_user"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"/>
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

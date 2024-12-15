@@ -28,6 +28,9 @@ class SingleUserActivity: Activity() {
         val tbUname: TextView = findViewById(R.id.tvUname)
         tbUname.text = getString(R.string.list_automobiles) + ' ' + user_name
 
+        updateDB()
+    }
+    fun updateDB(){
         val mDb : SQLiteDatabase
         val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 

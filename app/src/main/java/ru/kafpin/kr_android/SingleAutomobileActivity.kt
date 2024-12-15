@@ -29,6 +29,9 @@ class SingleAutomobileActivity: Activity() {
 
         automobile_id = intent.getIntExtra("id",-1)
 
+        updateDB()
+    }
+    fun updateDB(){
         val mDb : SQLiteDatabase
         val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 
@@ -113,7 +116,7 @@ class SingleAutomobileActivity: Activity() {
                 // Передаем данные в новый экран
                 intent.putExtra("name", name)
                 intent.putExtra("price", price)
-                if(selectedItem["description"]!=null)
+                if(selectedItem["service_description"]!=null)
                     intent.putExtra("description", description)
                 intent.putExtra("date_of_provide", date)
 
