@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        //Кнопки
         val bSerrives : Button = findViewById(R.id.bShowServices)
         val bMyAccount : Button = findViewById(R.id.bAddAccount)
 
@@ -20,18 +21,16 @@ class MainActivity : AppCompatActivity() {
         bSerrives.setBackgroundColor(resources.getColor(R.color.dark_blue))
         bMyAccount.setBackgroundColor(resources.getColor(R.color.dark_blue))
 
+        //Обработчик кнопки
         bSerrives.setOnClickListener{
             val intent = Intent(this@MainActivity, ServicesActivity::class.java)
             startActivity(intent)
         }
 
+        //Обработчик кнопки
         bMyAccount.setOnClickListener{
-
+            val intent = Intent(this@MainActivity, UsersActivity::class.java)
+            startActivity(intent)
         }
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-//            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-//            insets
-//        }
     }
 }

@@ -13,11 +13,14 @@ import java.io.IOException
 import java.sql.SQLException
 
 
-class ServicesActivity: Activity() {
+class SingleUserActivity: Activity() {
+    var user_id : Int = -1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_services)
+        setContentView(R.layout.activity_automobiles)
 
+        user_id = intent.getIntExtra("id",-1)
         val mDBHelper: DatabaseHelper
         val mDb : SQLiteDatabase
 
@@ -38,29 +41,36 @@ class ServicesActivity: Activity() {
     }
     fun updateList(mDb : SQLiteDatabase)
     {
-        // Список услуг
-        val services = ArrayList<HashMap<String, Any?>>()
-        // Список параметров услуги
-        var service: HashMap<String, Any?>
+
+        // Список автомобилей
+        val automobiles = ArrayList<HashMap<String, Any?>>()
+        // Список параметров автомобиля
+        var automobile: HashMap<String, Any?>
 
         // Отправляем запрос в БД
-        val cursor: Cursor = mDb.rawQuery("SELECT * FROM services", null)
+        val cursor: Cursor = mDb.rawQuery("SELECT * FROM automobiles WHERE user_id = ?",
+            arrayOf(user_id.toString())
+        )
+        println(cursor.toString())
         cursor.moveToFirst()
 
-        // Пробегаем по всем услугам
+        // Пробегаем по всем автомобилям
         while (!cursor.isAfterLast) {
-            service = HashMap()
+            automobile = HashMap()
 
-            // Заполняем услугу
-            service["id"] = cursor.getInt(0)
-            service["name"] = cursor.getString(1)
-            service["description"] = cursor.getString(2)
-            service["price"] = cursor.getInt(3)
+            // Заполняем автомобиль
+            automobile["id"] = cursor.getInt(0)
+            automobile["mark"] = cursor.getString(1)
+            automobile["model"] = cursor.getString(2)
+            automobile["user_id"] = cursor.getInt(3)
+            automobile["gos_number"] = cursor.getString(4)
 
-            // Закидываем услугу в список услуг
-            services.add(service)
+            automobile["mark_and_model"] = automobile["mark"].toString() + ' ' + automobile["model"]
+            println(automobile)
+            // Закидываем автомобиль в список автомобилей
+            automobiles.add(automobile)
 
-            // Переходим к следующей услуге
+            // Переходим к следующему автомобилю
             cursor.moveToNext()
         }
         cursor.close()
@@ -68,13 +78,13 @@ class ServicesActivity: Activity() {
 
         // Какие параметры услуги мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
-        val from = arrayOf("name")
-        val to = intArrayOf(R.id.tvServiceName)
+        val from = arrayOf("mark_and_model","gos_number")
+        val to = intArrayOf(R.id.tvAutoName,R.id.tvAutoNumber)
 
 
         // Создаем адаптер
-        val adapter = SimpleAdapter(this, services, R.layout.adapter_service_item, from, to)
-        val listView = findViewById<View>(R.id.lvServices) as ListView
+        val adapter = SimpleAdapter(this, automobiles, R.layout.adapter_automobile_item, from, to)
+        val listView = findViewById<View>(R.id.lvAutomobiles) as ListView
         listView.adapter = adapter
 
 
@@ -85,20 +95,13 @@ class ServicesActivity: Activity() {
                 val selectedItem = parent.getItemAtPosition(position) as HashMap<String, Any?>
                 println(selectedItem)
 
-                val name = selectedItem["name"] as String
-                var description : String = ""
-                if(selectedItem["description"]!=null)
-                    description = selectedItem["description"] as String
-                val price = selectedItem["price"] as Int
+                val automobile_id = selectedItem["id"] as Int
 
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
-                val intent: Intent = Intent(this@ServicesActivity,SingleServiceActivity::class.java)
+                val intent: Intent = Intent(this@SingleUserActivity,SingleAutomobileActivity::class.java)
 
                 // Передаем данные в новый экран
-                intent.putExtra("name", name)
-                intent.putExtra("price", price)
-                if(selectedItem["description"]!=null)
-                    intent.putExtra("description", description)
+                intent.putExtra("id", automobile_id)
 
                 // Запускаем новый экран
                 startActivity(intent)

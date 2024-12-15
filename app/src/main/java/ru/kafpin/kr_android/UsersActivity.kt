@@ -13,10 +13,10 @@ import java.io.IOException
 import java.sql.SQLException
 
 
-class ServicesActivity: Activity() {
+class UsersActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_services)
+        setContentView(R.layout.activity_users)
 
         val mDBHelper: DatabaseHelper
         val mDb : SQLiteDatabase
@@ -38,67 +38,58 @@ class ServicesActivity: Activity() {
     }
     fun updateList(mDb : SQLiteDatabase)
     {
-        // Список услуг
-        val services = ArrayList<HashMap<String, Any?>>()
+        // Список пользователей
+        val users = ArrayList<HashMap<String, Any?>>()
         // Список параметров услуги
-        var service: HashMap<String, Any?>
+        var user: HashMap<String, Any?>
 
         // Отправляем запрос в БД
-        val cursor: Cursor = mDb.rawQuery("SELECT * FROM services", null)
+        val cursor: Cursor = mDb.rawQuery("SELECT * FROM users", null)
         cursor.moveToFirst()
 
-        // Пробегаем по всем услугам
+        // Пробегаем по всем пользователям
         while (!cursor.isAfterLast) {
-            service = HashMap()
+            user = HashMap()
 
-            // Заполняем услугу
-            service["id"] = cursor.getInt(0)
-            service["name"] = cursor.getString(1)
-            service["description"] = cursor.getString(2)
-            service["price"] = cursor.getInt(3)
+            // Заполняем пользователя
+            user["id"] = cursor.getInt(0)
+            user["name"] = cursor.getString(1)
+            user["phone"] = cursor.getString(2)
 
-            // Закидываем услугу в список услуг
-            services.add(service)
+            // Закидываем пользователя в список пользователей
+            users.add(user)
 
-            // Переходим к следующей услуге
+            // Переходим к следующему пользователю
             cursor.moveToNext()
         }
         cursor.close()
 
 
-        // Какие параметры услуги мы будем отображать в соответствующих
+        // Какие параметры пользователя мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
-        val from = arrayOf("name")
-        val to = intArrayOf(R.id.tvServiceName)
+        val from = arrayOf("name","phone")
+        val to = intArrayOf(R.id.tvUname,R.id.tvPhone)
 
 
         // Создаем адаптер
-        val adapter = SimpleAdapter(this, services, R.layout.adapter_service_item, from, to)
-        val listView = findViewById<View>(R.id.lvServices) as ListView
+        val adapter = SimpleAdapter(this, users, R.layout.adapter_user_item, from, to)
+        val listView = findViewById<View>(R.id.lvUsers) as ListView
         listView.adapter = adapter
 
 
         //Устанавливаем слушатель событий на ListView
         listView.onItemClickListener =
             OnItemClickListener { parent, view, position, id -> // Получаем данные о выбранном элементе
-
                 val selectedItem = parent.getItemAtPosition(position) as HashMap<String, Any?>
                 println(selectedItem)
 
-                val name = selectedItem["name"] as String
-                var description : String = ""
-                if(selectedItem["description"]!=null)
-                    description = selectedItem["description"] as String
-                val price = selectedItem["price"] as Int
+                val user_id = selectedItem["id"] as Int
 
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
-                val intent: Intent = Intent(this@ServicesActivity,SingleServiceActivity::class.java)
+                val intent: Intent = Intent(this@UsersActivity,SingleUserActivity::class.java)
 
-                // Передаем данные в новый экран
-                intent.putExtra("name", name)
-                intent.putExtra("price", price)
-                if(selectedItem["description"]!=null)
-                    intent.putExtra("description", description)
+                // Передаем user_id в новый экран
+                intent.putExtra("id", user_id)
 
                 // Запускаем новый экран
                 startActivity(intent)

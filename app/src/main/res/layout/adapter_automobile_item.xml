@@ -2,15 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:padding="10dp"
     >
 
-    <TextView android:id="@+id/tvServiceName"
-
+    <TextView android:id="@+id/tvAutoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/service_name"
+        android:text="@string/auto_name"
         android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView android:id="@+id/tvAutoNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/auto_number"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>

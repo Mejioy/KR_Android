@@ -1,3 +1,32 @@
 <resources>
     <string name="app_name">KR_Android</string>
+
+    <string name="add_automobile">Добавить автомобиль</string>
+    <string name="add_user">Добавить пользователя</string>
+    <string name="add_providedService">Запросить услугу</string>
+
+    <string name="view_services">Посмотреть список услуг</string>
+    <string name="users">Пользователи</string>
+
+
+    <string name="service_name">Название услуги</string>
+    <string name="service_info">Информация об услуге</string>
+    <string name="service_date">Дата оказания</string>
+
+    <string name="user_name">Имя пользователя</string>
+    <string name="user_phone">Номер телефона</string>
+
+    <string name="auto_name">Марка и модель автомобиля</string>
+    <string name="auto_number">Гос. номер</string>
+
+
+    <string name="list_automobiles">Список автомобилей пользователя </string>
+    <string name="list_providedservices">Список оказанных услуг для автомобиля </string>
+
+
+    <string name="providedservice_info">Информация об оказанной услуге</string>
+
+
+    <string name="request_service">Запросить услугу</string>
+
 </resources>

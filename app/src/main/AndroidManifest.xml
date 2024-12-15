@@ -21,6 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity android:name="ru.kafpin.kr_android.ServicesActivity"
             android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.KR_Android">
@@ -34,6 +35,35 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.ServicesActivity" />
+        </activity>
+
+        <activity android:name="ru.kafpin.kr_android.UsersActivity"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.KR_Android">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name="ru.kafpin.kr_android.SingleUserActivity"
+            android:parentActivityName="ru.kafpin.kr_android.UsersActivity"
+            android:theme="@style/Theme.KR_Android">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.UsersActivity" />
+        </activity>
+        <activity android:name="ru.kafpin.kr_android.SingleAutomobileActivity"
+            android:parentActivityName="ru.kafpin.kr_android.SingleUserActivity"
+            android:theme="@style/Theme.KR_Android">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.SingleUserActivity" />
+        </activity>
+        <activity android:name="ru.kafpin.kr_android.SingleProvidedServiceActivity"
+            android:parentActivityName="ru.kafpin.kr_android.SingleAutomobileActivity"
+            android:theme="@style/Theme.KR_Android">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.SingleAutomobileActivity" />
         </activity>
     </application>
 
