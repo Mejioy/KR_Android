@@ -18,10 +18,8 @@ class UsersActivity: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users)
 
-        val mDBHelper: DatabaseHelper
         val mDb : SQLiteDatabase
-
-        mDBHelper = DatabaseHelper(this)
+        val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 
         try {
             mDBHelper.updateDataBase()
@@ -64,18 +62,15 @@ class UsersActivity: Activity() {
         }
         cursor.close()
 
-
         // Какие параметры пользователя мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
         val from = arrayOf("name","phone")
         val to = intArrayOf(R.id.tvUname,R.id.tvPhone)
 
-
         // Создаем адаптер
         val adapter = SimpleAdapter(this, users, R.layout.adapter_user_item, from, to)
         val listView = findViewById<View>(R.id.lvUsers) as ListView
         listView.adapter = adapter
-
 
         //Устанавливаем слушатель событий на ListView
         listView.onItemClickListener =
@@ -84,12 +79,14 @@ class UsersActivity: Activity() {
                 println(selectedItem)
 
                 val user_id = selectedItem["id"] as Int
+                val user_name = selectedItem["name"] as String
 
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
                 val intent: Intent = Intent(this@UsersActivity,SingleUserActivity::class.java)
 
-                // Передаем user_id в новый экран
+                // Передаем параметры в новый экран
                 intent.putExtra("id", user_id)
+                intent.putExtra("name", user_name)
 
                 // Запускаем новый экран
                 startActivity(intent)

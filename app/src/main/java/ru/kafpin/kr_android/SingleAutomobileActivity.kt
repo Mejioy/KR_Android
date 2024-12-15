@@ -1,5 +1,6 @@
 package ru.kafpin.kr_android
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import android.widget.TextView
 import java.io.IOException
 import java.sql.SQLException
 
@@ -16,15 +18,19 @@ import java.sql.SQLException
 class SingleAutomobileActivity: Activity() {
     var automobile_id : Int = -1
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_providedservices)
 
-        automobile_id = intent.getIntExtra("id",-1)
-        val mDBHelper: DatabaseHelper
-        val mDb : SQLiteDatabase
+        val automobile_name = intent.getStringExtra("name")
+        val tbAutoName: TextView = findViewById(R.id.tvAutoName)
+        tbAutoName.text = getString(R.string.list_providedservices) + ' ' + automobile_name
 
-        mDBHelper = DatabaseHelper(this)
+        automobile_id = intent.getIntExtra("id",-1)
+
+        val mDb : SQLiteDatabase
+        val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 
         try {
             mDBHelper.updateDataBase()
@@ -68,7 +74,6 @@ class SingleAutomobileActivity: Activity() {
             provided_service["service_price"] = cursor.getInt(5)
             provided_service["service_description"] = cursor.getString(6)
 
-
             // Закидываем автомобиль в список автомобилей
             provided_services.add(provided_service)
 
@@ -77,18 +82,15 @@ class SingleAutomobileActivity: Activity() {
         }
         cursor.close()
 
-
         // Какие параметры услуги мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
         val from = arrayOf("service_name","date_of_provide")
         val to = intArrayOf(R.id.tvProvidedServiceName,R.id.tvProvidedServiceDate)
 
-
         // Создаем адаптер
         val adapter = SimpleAdapter(this, provided_services, R.layout.adapter_providedservice_item, from, to)
         val listView = findViewById<View>(R.id.lvProvidedServices) as ListView
         listView.adapter = adapter
-
 
         //Устанавливаем слушатель событий на ListView
         listView.onItemClickListener =

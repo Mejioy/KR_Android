@@ -18,6 +18,6 @@ class SingleServiceActivity:Activity() {
 
         tvName.text = intent.getStringExtra("name")
         tvDescription.text = intent.getStringExtra("description")
-        tvPrice.text = "Стоимость "+intent.getIntExtra("price",0).toString()+" рублей"
+        tvPrice.text = getString(R.string.service_price) + ' '+intent.getIntExtra("price",0).toString()+" рублей"
     }
 }

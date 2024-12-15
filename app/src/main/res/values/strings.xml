@@ -10,6 +10,7 @@
 
 
     <string name="service_name">Название услуги</string>
+    <string name="service_price">Стоимость</string>
     <string name="service_info">Информация об услуге</string>
     <string name="service_date">Дата оказания</string>
 
@@ -20,12 +21,12 @@
     <string name="auto_number">Гос. номер</string>
 
 
-    <string name="list_automobiles">Список автомобилей пользователя </string>
-    <string name="list_providedservices">Список оказанных услуг для автомобиля </string>
+    <string name="list_automobiles">Список автомобилей пользователя</string>
+    <string name="list_providedservices">Список оказанных услуг для автомобиля</string>
 
 
     <string name="providedservice_info">Информация об оказанной услуге</string>
-
+    <string name="providedservice_date">Дата оказания услуги:</string>
 
     <string name="request_service">Запросить услугу</string>
 

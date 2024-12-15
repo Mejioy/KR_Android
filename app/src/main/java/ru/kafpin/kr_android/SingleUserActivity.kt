@@ -1,5 +1,6 @@
 package ru.kafpin.kr_android
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
@@ -9,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ListView
 import android.widget.SimpleAdapter
+import android.widget.TextView
 import java.io.IOException
 import java.sql.SQLException
 
@@ -16,15 +18,18 @@ import java.sql.SQLException
 class SingleUserActivity: Activity() {
     var user_id : Int = -1
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_automobiles)
 
         user_id = intent.getIntExtra("id",-1)
-        val mDBHelper: DatabaseHelper
-        val mDb : SQLiteDatabase
+        val user_name = intent.getStringExtra("name")
+        val tbUname: TextView = findViewById(R.id.tvUname)
+        tbUname.text = getString(R.string.list_automobiles) + ' ' + user_name
 
-        mDBHelper = DatabaseHelper(this)
+        val mDb : SQLiteDatabase
+        val mDBHelper: DatabaseHelper = DatabaseHelper(this)
 
         try {
             mDBHelper.updateDataBase()
@@ -75,7 +80,6 @@ class SingleUserActivity: Activity() {
         }
         cursor.close()
 
-
         // Какие параметры услуги мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
         val from = arrayOf("mark_and_model","gos_number")
@@ -96,12 +100,14 @@ class SingleUserActivity: Activity() {
                 println(selectedItem)
 
                 val automobile_id = selectedItem["id"] as Int
+                val automobile_name = selectedItem["mark_and_model"] as String
 
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
                 val intent: Intent = Intent(this@SingleUserActivity,SingleAutomobileActivity::class.java)
 
                 // Передаем данные в новый экран
                 intent.putExtra("id", automobile_id)
+                intent.putExtra("name", automobile_name)
 
                 // Запускаем новый экран
                 startActivity(intent)

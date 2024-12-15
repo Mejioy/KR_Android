@@ -65,18 +65,15 @@ class ServicesActivity: Activity() {
         }
         cursor.close()
 
-
         // Какие параметры услуги мы будем отображать в соответствующих
         // элементах из разметки adapter_item.xml
         val from = arrayOf("name")
         val to = intArrayOf(R.id.tvServiceName)
 
-
         // Создаем адаптер
         val adapter = SimpleAdapter(this, services, R.layout.adapter_service_item, from, to)
         val listView = findViewById<View>(R.id.lvServices) as ListView
         listView.adapter = adapter
-
 
         //Устанавливаем слушатель событий на ListView
         listView.onItemClickListener =

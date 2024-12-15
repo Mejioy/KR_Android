@@ -61,7 +61,6 @@ class DatabaseHelper(context: Context) :
     @Throws(IOException::class)
     private fun copyDBFile() {
         val mInput = mContext.assets.open(DB_NAME)
-//        val mInput = mContext.resources.openRawResource(R.raw.info_large)
         val mOutput: OutputStream = FileOutputStream(DB_PATH + DB_NAME)
         val mBuffer = ByteArray(1024)
         var mLength: Int
@@ -90,13 +89,7 @@ class DatabaseHelper(context: Context) :
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         if (newVersion > oldVersion) mNeedUpdate = true
-//        if (newVersion > oldVersion) {
-//            val q = "ALTER TABLE clients ADD height INTEGER"
-//            db.execSQL(q)
-//        }
-
     }
-
 
     companion object {
         private const val DB_NAME = "detail.db"

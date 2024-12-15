@@ -20,6 +20,6 @@ class SingleProvidedServiceActivity:Activity() {
         tvName.text = intent.getStringExtra("name")
         tvDescription.text = intent.getStringExtra("description")
         tvPrice.text = "Стоимость "+intent.getIntExtra("price",0).toString()+" рублей"
-        tvProvidedServiceDate.text = intent.getStringExtra("date_of_provide")
+        tvProvidedServiceDate.text = getString(R.string.providedservice_date) + ' ' + intent.getStringExtra("date_of_provide")
     }
 }
