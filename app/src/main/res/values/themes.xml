@@ -5,7 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 <!--        <item name="windowActionBar">true</item>-->
 <!--        <item name="windowNoTitle">false</item>-->
+<!--        <item name="buttonStyle">@style/Base.Theme.KR_Android</item>-->
     </style>
     <style name="Theme.KR_Android" parent="Base.Theme.KR_Android" />
-
 </resources>

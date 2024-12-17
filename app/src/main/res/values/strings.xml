@@ -19,7 +19,11 @@
     <string name="user_name">Имя пользователя</string>
     <string name="user_phone">Номер телефона</string>
 
+    <string name="auto_info">Информация об автомобиле</string>
+
     <string name="auto_name">Марка и модель автомобиля</string>
+    <string name="auto_mark">Марка</string>
+    <string name="auto_model">Модель</string>
     <string name="auto_number">Гос. номер</string>
 
 
@@ -32,4 +36,11 @@
 
     <string name="request_service">Запросить услугу</string>
 
+
+<!--    Toasts-->
+    <string name="need_fill_all">Необходимо заполнить все поля формы</string>
+    <string name="valid_gosnumber">Гос.номер должен быть записан в формате: A111AA33rus</string>
+    <string name="valid_phone">Телефон должен быть введён в формате: 8(***)***-**-**</string>
+    <string name="user_exist">Данный номер телефона используется другим пользователем</string>
+    <string name="automobile_exist">Данный гос.номер присвоен другому автомобилю</string>
 </resources>

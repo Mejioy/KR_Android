@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.Button
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
@@ -16,7 +17,10 @@ import java.sql.SQLException
 
 
 class SingleUserActivity: Activity() {
+
     var user_id : Int = -1
+
+    val REQUEST_CHOOSE_THIEF = 0
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +33,15 @@ class SingleUserActivity: Activity() {
         tbUname.text = getString(R.string.list_automobiles) + ' ' + user_name
 
         updateDB()
+        val bAutoAdd : Button = findViewById(R.id.bAddAuto)
+
+        bAutoAdd.setBackgroundColor(resources.getColor(R.color.dark_blue))
+        bAutoAdd.setOnClickListener{
+            val questionIntent = Intent(this@SingleUserActivity,
+                AddAutoActivity::class.java)
+            questionIntent.putExtra("user_id",user_id)
+            startActivityForResult(questionIntent, REQUEST_CHOOSE_THIEF)
+        }
     }
     fun updateDB(){
         val mDb : SQLiteDatabase
@@ -47,9 +60,18 @@ class SingleUserActivity: Activity() {
         }
         updateList(mDb)
     }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CHOOSE_THIEF -> {
+                    updateDB()
+                }
+            }
+        }
+    }
     fun updateList(mDb : SQLiteDatabase)
     {
-
         // Список автомобилей
         val automobiles = ArrayList<HashMap<String, Any?>>()
         // Список параметров автомобиля

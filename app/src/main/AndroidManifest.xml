@@ -66,6 +66,13 @@
                 android:value="ru.kafpin.kr_android.UsersActivity" />
         </activity>
 
+        <activity android:name="ru.kafpin.kr_android.AddAutoActivity"
+            android:parentActivityName="ru.kafpin.kr_android.SingleUserActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.SingleUserActivity" />
+
+        </activity>
     </application>
 
 </manifest>
