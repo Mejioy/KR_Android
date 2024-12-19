@@ -13,7 +13,7 @@ import java.io.IOException
 import java.sql.SQLException
 
 
-class ServicesActivity: Activity() {
+class ChoiceServiceActivity: Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_services)
@@ -84,22 +84,17 @@ class ServicesActivity: Activity() {
                 println(selectedItem)
 
                 val name = selectedItem["name"] as String
-                var description : String = ""
-                if(selectedItem["description"]!=null)
-                    description = selectedItem["description"] as String
-                val displayed_price = selectedItem["displayed_price"] as String
+                val id = selectedItem["id"] as Int
 
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
-                val intent: Intent = Intent(this@ServicesActivity,SingleServiceActivity::class.java)
+                val answerIntent: Intent = Intent(this@ChoiceServiceActivity,SingleServiceActivity::class.java)
 
                 // Передаем данные в новый экран
-                intent.putExtra("name", name)
-                intent.putExtra("displayed_price", displayed_price)
-                if(selectedItem["description"]!=null)
-                    intent.putExtra("description", description)
+                answerIntent.putExtra("name", name)
+                answerIntent.putExtra("service_id", id)
 
-                // Запускаем новый экран
-                startActivity(intent)
+                setResult(RESULT_OK, answerIntent)
+                finish()
             }
     }
 }

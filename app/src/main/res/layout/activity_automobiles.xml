@@ -22,7 +22,7 @@
 
     <ListView
         android:layout_marginTop="160dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="80dp"
         android:id="@+id/lvAutomobiles"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,6 +30,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:padding="5dp"
         android:id="@+id/bAddAuto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

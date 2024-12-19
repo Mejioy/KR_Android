@@ -52,6 +52,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ru.kafpin.kr_android.SingleUserActivity" />
         </activity>
+
+        <activity android:name="ru.kafpin.kr_android.AddProvidedServiceActivity"
+            android:parentActivityName="ru.kafpin.kr_android.SingleAutomobileActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.SingleAutomobileActivity" />
+        </activity>
+
+        <activity android:name="ru.kafpin.kr_android.ChoiceServiceActivity"
+            android:parentActivityName="ru.kafpin.kr_android.AddProvidedServiceActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ru.kafpin.kr_android.AddProvidedServiceActivity" />
+        </activity>
+
         <activity android:name="ru.kafpin.kr_android.SingleProvidedServiceActivity"
             android:parentActivityName="ru.kafpin.kr_android.SingleAutomobileActivity">
             <meta-data

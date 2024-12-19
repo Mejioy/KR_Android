@@ -10,7 +10,7 @@
 
 
     <string name="service_name">Название услуги</string>
-    <string name="service_price">Стоимость</string>
+    <string name="service_price">Стоимость:</string>
     <string name="service_info">Информация об услуге</string>
     <string name="service_date">Дата оказания</string>
 
@@ -28,16 +28,23 @@
 
 
     <string name="list_automobiles">Список автомобилей пользователя</string>
+    <string name="list_services">Список услуг детейлинг центра</string>
+    <string name="list_users">Список пользователей приложения</string>
     <string name="list_providedservices">Список оказанных услуг для автомобиля</string>
 
 
     <string name="providedservice_info">Информация об оказанной услуге</string>
+    <string name="providedservice_service">Услуга:</string>
+    <string name="providedservice_status">Статус:</string>
+    <string name="providedservice_employer">Сотрудник:</string>
     <string name="providedservice_date">Дата оказания услуги:</string>
 
     <string name="request_service">Запросить услугу</string>
 
 
 <!--    Toasts-->
+    <string name="need_choice_service">Необходимо выбрать услугу</string>
+    <string name="need_change_date">Выбрана недопустимая дата</string>
     <string name="need_fill_all">Необходимо заполнить все поля формы</string>
     <string name="valid_gosnumber">Гос.номер должен быть записан в формате: A111AA33rus</string>
     <string name="valid_phone">Телефон должен быть введён в формате: 8(***)***-**-**</string>

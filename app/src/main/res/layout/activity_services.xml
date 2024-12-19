@@ -6,8 +6,22 @@
     android:layout_height="match_parent"
     >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="187dp"
+        android:text="@string/list_services"
+        android:textSize="34sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.456"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="160dp"
         android:layout_marginBottom="60dp"
         android:id="@+id/lvServices"
         android:layout_width="match_parent"

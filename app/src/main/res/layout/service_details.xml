@@ -5,15 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginStart="160dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="187dp"
+        android:gravity="center"
         android:text="@string/service_info"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,34 +26,37 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="40dp"
+        android:textAlignment="inherit"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="26sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <TextView
         android:id="@+id/tvPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="180dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
+        android:textAlignment="inherit"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="26sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvName" />
 
     <TextView
         android:id="@+id/tvDescription"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
-        android:layout_marginTop="260dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="40dp"
+        android:textAlignment="inherit"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:textSize="24sp"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>

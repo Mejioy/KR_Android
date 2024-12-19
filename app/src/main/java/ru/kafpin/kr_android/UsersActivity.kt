@@ -61,7 +61,7 @@ class UsersActivity: Activity() {
     {
         // Список пользователей
         val users = ArrayList<HashMap<String, Any?>>()
-        // Список параметров услуги
+        // Список параметров пользователя
         var user: HashMap<String, Any?>
 
         // Отправляем запрос в БД

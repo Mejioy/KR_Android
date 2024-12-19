@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView.OnItemClickListener
+import android.widget.Button
 import android.widget.ListView
 import android.widget.SimpleAdapter
 import android.widget.TextView
@@ -16,7 +17,10 @@ import java.sql.SQLException
 
 
 class SingleAutomobileActivity: Activity() {
+
     var automobile_id : Int = -1
+
+    val REQUEST_CHOOSE_THIEF = 0
 
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +34,25 @@ class SingleAutomobileActivity: Activity() {
         automobile_id = intent.getIntExtra("id",-1)
 
         updateDB()
+        val bAutoAdd : Button = findViewById(R.id.bRequestService)
+
+        bAutoAdd.setBackgroundColor(resources.getColor(R.color.dark_blue))
+        bAutoAdd.setOnClickListener{
+            val questionIntent = Intent(this@SingleAutomobileActivity,
+                AddProvidedServiceActivity::class.java)
+            questionIntent.putExtra("automobile_id",automobile_id)
+            startActivityForResult(questionIntent, REQUEST_CHOOSE_THIEF)
+        }
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK) {
+            when (requestCode) {
+                REQUEST_CHOOSE_THIEF -> {
+                    updateDB()
+                }
+            }
+        }
     }
     fun updateDB(){
         val mDb : SQLiteDatabase
@@ -73,9 +96,14 @@ class SingleAutomobileActivity: Activity() {
             provided_service["service_id"] = cursor.getInt(1)
             provided_service["automobile_id"] = cursor.getInt(2)
             provided_service["date_of_provide"] = cursor.getString(3)
-            provided_service["service_name"] = cursor.getString(4)
-            provided_service["service_price"] = cursor.getInt(5)
-            provided_service["service_description"] = cursor.getString(6)
+            provided_service["employer_id"] = cursor.getInt(4)
+            provided_service["status"] = cursor.getString(5)
+
+            provided_service["service_name"] = cursor.getString(6)
+            provided_service["service_price"] = cursor.getInt(7)
+            provided_service["service_description"] = cursor.getString(8)
+
+            provided_service["displayed_price"] = provided_service["service_price"].toString()+" рублей"
 
             // Закидываем автомобиль в список автомобилей
             provided_services.add(provided_service)
@@ -103,22 +131,25 @@ class SingleAutomobileActivity: Activity() {
                 println(selectedItem)
 
                 val name = selectedItem["service_name"] as String
-                var description : String = ""
-                if(selectedItem["service_description"]!=null)
-                    description = selectedItem["service_description"] as String
-                val price = selectedItem["service_price"] as Int
+
+                val displayed_price = selectedItem["displayed_price"] as String
                 val date = selectedItem["date_of_provide"] as String
 
+                val status = selectedItem["status"] as String
+
+                val employer_id = selectedItem["employer_id"] as Int
                 println(selectedItem)
                  // Создаем Intent для перехода на новый экран (замените на ваш класс и экран)
                 val intent: Intent = Intent(this@SingleAutomobileActivity,SingleProvidedServiceActivity::class.java)
 
                 // Передаем данные в новый экран
                 intent.putExtra("name", name)
-                intent.putExtra("price", price)
-                if(selectedItem["service_description"]!=null)
-                    intent.putExtra("description", description)
+                intent.putExtra("displayed_price", displayed_price)
+                intent.putExtra("status", status)
                 intent.putExtra("date_of_provide", date)
+                if(selectedItem["employer_id"]!=null)
+                    intent.putExtra("employer_id", employer_id)
+
 
                 // Запускаем новый экран
                 startActivity(intent)
