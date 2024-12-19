@@ -20,6 +20,7 @@ class SingleUserActivity: Activity() {
 
     var user_id : Int = -1
 
+    var user_name = ""
     val REQUEST_CHOOSE_THIEF = 0
 
     @SuppressLint("SetTextI18n")
@@ -28,7 +29,7 @@ class SingleUserActivity: Activity() {
         setContentView(R.layout.activity_automobiles)
 
         user_id = intent.getIntExtra("id",-1)
-        val user_name = intent.getStringExtra("name")
+        user_name = intent.getStringExtra("name").toString()
         val tbUname: TextView = findViewById(R.id.tvUname)
         tbUname.text = getString(R.string.list_automobiles) + ' ' + user_name
 
@@ -132,7 +133,8 @@ class SingleUserActivity: Activity() {
 
                 // Передаем данные в новый экран
                 intent.putExtra("id", automobile_id)
-                intent.putExtra("name", automobile_name)
+                intent.putExtra("automobile_name", automobile_name)
+                intent.putExtra("user_name", user_name)
 
                 // Запускаем новый экран
                 startActivity(intent)

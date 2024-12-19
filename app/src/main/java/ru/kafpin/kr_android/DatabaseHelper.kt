@@ -94,6 +94,6 @@ class DatabaseHelper(context: Context) :
     companion object {
         private const val DB_NAME = "detail.db"
         private var DB_PATH = ""
-        private const val DB_VERSION = 7
+        private const val DB_VERSION = 8
     }
 }

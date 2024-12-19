@@ -44,6 +44,8 @@
 
 <!--    Toasts-->
     <string name="need_choice_service">Необходимо выбрать услугу</string>
+    <string name="need_choice_date">Необходимо выбрать дату</string>
+
     <string name="need_change_date">Выбрана недопустимая дата</string>
     <string name="need_fill_all">Необходимо заполнить все поля формы</string>
     <string name="valid_gosnumber">Гос.номер должен быть записан в формате: A111AA33rus</string>

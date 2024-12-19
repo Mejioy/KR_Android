@@ -19,7 +19,8 @@ import java.sql.SQLException
 class SingleAutomobileActivity: Activity() {
 
     var automobile_id : Int = -1
-
+    var automobile_name = ""
+    var user_name = ""
     val REQUEST_CHOOSE_THIEF = 0
 
     @SuppressLint("SetTextI18n")
@@ -27,7 +28,10 @@ class SingleAutomobileActivity: Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_providedservices)
 
-        val automobile_name = intent.getStringExtra("name")
+        automobile_name = intent.getStringExtra("automobile_name").toString()
+        user_name = intent.getStringExtra("user_name").toString()
+
+
         val tbAutoName: TextView = findViewById(R.id.tvAutoName)
         tbAutoName.text = getString(R.string.list_providedservices) + ' ' + automobile_name
 
@@ -41,6 +45,8 @@ class SingleAutomobileActivity: Activity() {
             val questionIntent = Intent(this@SingleAutomobileActivity,
                 AddProvidedServiceActivity::class.java)
             questionIntent.putExtra("automobile_id",automobile_id)
+            questionIntent.putExtra("automobile_name",automobile_name)
+            questionIntent.putExtra("user_name",user_name)
             startActivityForResult(questionIntent, REQUEST_CHOOSE_THIEF)
         }
     }
