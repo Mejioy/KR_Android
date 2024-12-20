@@ -30,10 +30,10 @@
     <string name="list_automobiles">Список автомобилей пользователя</string>
     <string name="list_services">Список услуг детейлинг центра</string>
     <string name="list_users">Список пользователей приложения</string>
-    <string name="list_providedservices">Список оказанных услуг для автомобиля</string>
+    <string name="list_providedservices">Список заявок оказания услуг для автомобиля</string>
 
 
-    <string name="providedservice_info">Информация об оказанной услуге</string>
+    <string name="providedservice_info">Информация о заявке</string>
     <string name="providedservice_service">Услуга:</string>
     <string name="providedservice_status">Статус:</string>
     <string name="providedservice_employer">Сотрудник:</string>
